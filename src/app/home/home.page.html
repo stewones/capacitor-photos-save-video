@@ -1,12 +1,12 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-toolbar>
+  <ion-toolbar> <ion-title> Ionic Blank </ion-title> </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>If you get lost, the <a target="_blank" rel="noopener" href="https://beta.ionicframework.com/docs/">docs</a> will be your guide.</p>
+  <video height="240" controls>
+    <source [src]="url" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  <br /><br />
+  <button (click)="save()">Save Video</button>
 </ion-content>
