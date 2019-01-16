@@ -18,15 +18,13 @@ import { LoadingController } from "@ionic/angular";
   styleUrls: ["home.page.scss"]
 })
 export class HomePage {
-  public albumName: string = `AWESOME`;
+  public albumName: string = `MY AWESOME ALBUM`;
 
-  // video
   public videoUrl: string =
     "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4";
   public videoUrlPoster: string =
     "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/Sintel.jpg";
 
-  // gif
   public gifUrl: string = `https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif`;
 
   constructor(
