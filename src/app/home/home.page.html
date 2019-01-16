@@ -1,12 +1,30 @@
 <ion-header>
-  <ion-toolbar> <ion-title> Ionic Blank </ion-title> </ion-toolbar>
+  <ion-toolbar>
+    <ion-title> Capacitor Save Video/Gif to album </ion-title>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <video height="240" controls>
-    <source [src]="url" type="video/mp4" />
+  <ion-item>
+    <ion-label position="floating">Album name</ion-label>
+    <ion-input placeholder="" [(ngModel)]="albumName"></ion-input>
+  </ion-item>
+
+  <br /><br />
+
+  <video height="140" controls [poster]="videoUrlPoster">
+    <source [src]="videoUrl" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
   <br /><br />
-  <button (click)="save()">Save Video</button>
+  <ion-button shape="round" color="primary" fill="outline" (click)="saveVideo()"
+    >Save Video to {{ albumName }}</ion-button
+  >
+
+  <br /><br />
+
+  <img [src]="gifUrl" style="max-width: 160px" /> <br /><br />
+  <ion-button shape="round" color="primary" fill="outline" (click)="saveGif()"
+    >Save Gif to {{ albumName }}</ion-button
+  >
 </ion-content>
