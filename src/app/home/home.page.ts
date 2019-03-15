@@ -34,7 +34,7 @@ export class HomePage {
   ) {}
 
   async saveVideo() {
-    const loader = await this.loading.create({
+    const loader = await this.loading.create(<any>{
       showBackdrop: true,
       backdropDismiss: true
     });

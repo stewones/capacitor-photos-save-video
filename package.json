@@ -9,7 +9,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "link": "npm link @capacitor/core"
   },
   "private": true,
   "dependencies": {
@@ -20,6 +21,7 @@
     "@angular/platform-browser": "~7.2.0",
     "@angular/platform-browser-dynamic": "~7.2.0",
     "@angular/router": "~7.2.0",
+    "@capacitor/android": "^1.0.0-beta.19",
     "@capacitor/cli": "1.0.0-beta.13",
     "@capacitor/ios": "^1.0.0-beta.13",
     "@ionic-native/core": "5.0.0-beta.21",
