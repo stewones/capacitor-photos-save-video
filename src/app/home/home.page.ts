@@ -11,6 +11,11 @@ import {
 } from "@ionic-native/file-transfer/ngx";
 import { File } from "@ionic-native/file/ngx";
 import { LoadingController } from "@ionic/angular";
+import {
+  Downloader,
+  DownloadEventData,
+  ProgressEventData
+} from "capacitor-downloader";
 
 @Component({
   selector: "app-home",
@@ -18,6 +23,8 @@ import { LoadingController } from "@ionic/angular";
   styleUrls: ["home.page.scss"]
 })
 export class HomePage {
+  downloadManager: Downloader = new Downloader();
+
   public albumName: string = `MY AWESOME ALBUM`;
 
   public videoUrl: string =
@@ -31,7 +38,14 @@ export class HomePage {
     private fileTransfer: FileTransfer,
     private file: File,
     private loading: LoadingController
-  ) {}
+  ) {
+    // Plugins.Photos.getAlbums().then(r => console.log("success response", r));
+    // Plugins.Photos.createAlbum({ name: this.albumName })
+    //   .then(r => console.log("success response", r))
+    //   .catch(err => console.log("ERROR", err));
+
+    this.saveGif();
+  }
 
   async saveVideo() {
     const loader = await this.loading.create(<any>{
@@ -84,7 +98,7 @@ export class HomePage {
         let album: any = await this.getAlbum().catch(err =>
           alert(`Cant get album`)
         );
-
+        console.log(`ALBUM NAME`, album);
         if (!album) {
           await this.createAlbum().catch(err => alert(`Cant create album`));
           album = await this.getAlbum().catch(err => alert(`Cant get album`));
@@ -92,7 +106,7 @@ export class HomePage {
 
         Plugins.Photos.saveGif({
           data: r.nativeURL,
-          albumIdentifier: album && album.identifier
+          albumIdentifier: (album && album.identifier) || album
         })
           .then(r => {
             loader.dismiss();
@@ -105,7 +119,25 @@ export class HomePage {
             alert(`err`);
           });
       })
-      .catch(console.log);
+      .catch(err => console.log("FILE TRANSFER ERROR", err));
+
+    // const data = await this.downloadManager.createDownload({
+    //   url: this.gifUrl
+    //   //'https://wallpaperscraft.com/image/hulk_wolverine_x_men_marvel_comics_art_99032_3840x2400.jpg'
+    // });
+    // const imageDownloaderId = data.value;
+    // this.downloadManager.initialize();
+    // this.downloadManager
+    //   .start({ id: imageDownloaderId }, (progressData: ProgressEventData) => {
+    //     console.log(`Progress : ${progressData.value}%`);
+    //     console.log(`Current Size : ${progressData.currentSize}%`);
+    //     console.log(`Total Size : ${progressData.totalSize}%`);
+    //     console.log(`Download Speed in bytes : ${progressData.speed}%`);
+    //   })
+    //   .then((completed: DownloadEventData) => {
+    //     console.log(`Image : ${completed.path}`);
+    //   })
+    //   .catch(err => console.log("FILE TRANSFER ERROR", err));
   }
 
   async createAlbum() {
