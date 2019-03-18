@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title> Capacitor Save Video/Gif to album </ion-title>
+    <ion-title> Capacitor Save Video/Photo/Gif to album </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -26,5 +26,12 @@
   <img [src]="gifUrl" style="max-width: 160px" /> <br /><br />
   <ion-button shape="round" color="primary" fill="outline" (click)="saveGif()"
     >Save Gif to {{ albumName }}</ion-button
+  >
+
+  <br /><br />
+
+  <img [src]="photoUrl" style="max-width: 160px" /> <br /><br />
+  <ion-button shape="round" color="primary" fill="outline" (click)="savePhoto()"
+    >Save Photo to {{ albumName }}</ion-button
   >
 </ion-content>
