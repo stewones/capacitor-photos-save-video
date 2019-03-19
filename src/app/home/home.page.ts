@@ -186,7 +186,7 @@ export class HomePage {
         //   await this.createAlbum().catch(err => alert(`Cant create album`));
         //   album = await this.getAlbum().catch(err => alert(`Cant get album`));
         // }
-        //  alert(r.nativeURL);
+        alert(r.nativeURL);
         // console.log(`ALBUM NAME`, album, "NATIVE URL", r.nativeURL);
 
         Plugins.Photos.savePhoto({
